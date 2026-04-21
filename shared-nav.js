@@ -93,9 +93,21 @@
     </div>
   </footer>`;
 
-  // Inject Navbar at top of body
+  // --- AUTOMATIC LAYOUT FIX ---
+  // 1. Inject Navbar at the very top of body
   document.body.insertAdjacentHTML('afterbegin', navHTML);
   
-  // Inject Footer at bottom of body
+  // 2. Wrap existing content in <main> if not already wrapped
+  // This ensures the CSS flexbox rules work correctly
+  if (!document.querySelector('main')) {
+    const mainWrapper = document.createElement('main');
+    // Move all current body children (except navbar) into <main>
+    while (document.body.childNodes.length > 1) {
+        mainWrapper.appendChild(document.body.childNodes[1]);
+    }
+    document.body.appendChild(mainWrapper);
+  }
+
+  // 3. Inject Footer at the very bottom of body
   document.body.insertAdjacentHTML('beforeend', footerHTML);
 })();
