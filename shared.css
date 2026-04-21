@@ -22,9 +22,21 @@
   --sans:  'DM Sans', system-ui, sans-serif;
   --ease:  cubic-bezier(0.25,0.46,0.45,0.94);
 }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--cream);color:var(--navy);overflow-x:hidden}
+
+/* ── FOOTER FIX: FLEXBOX BODY ── */
+body {
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--navy);
+  overflow-x:hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Forces body to be at least screen height */
+}
+
 h1,h2,h3{font-family:var(--serif)}
 h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;line-height:1.1}
 h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.2}
@@ -38,6 +50,12 @@ a{text-decoration:none;color:inherit}
 .section-header .label{margin-bottom:1rem;display:block}
 .section-header h2{margin-bottom:1rem}
 .section-header p{max-width:560px}
+
+/* ── MAIN CONTENT SPACING ── */
+main, .hero, .page-hero {
+  flex: 1 0 auto; /* Pushes the footer down */
+  padding-top: 72px; /* Space for the fixed navbar */
+}
 
 /* ── BUTTONS ── */
 .btn{display:inline-block;font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;cursor:pointer;transition:all .25s var(--ease);border:none;outline:none}
@@ -61,6 +79,7 @@ a{text-decoration:none;color:inherit}
 .navbar-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem}
 .hamburger span{width:22px;height:1.5px;background:var(--white);transition:all .3s}
+
 @media(max-width:768px){
   .navbar-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--navy);padding:1rem 2rem 1.5rem;flex-direction:column;align-items:flex-start;gap:0;border-top:1px solid rgba(201,168,76,.15)}
   .navbar-nav.open{display:flex}
@@ -79,7 +98,7 @@ a{text-decoration:none;color:inherit}
 .page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,.6);max-width:540px;line-height:1.8}
 
 /* ── FOOTER ── */
-footer{background:var(--navy);padding:4rem 0 2rem;border-top:1px solid rgba(201,168,76,.15)}
+footer{background:var(--navy);padding:4rem 0 2rem;border-top:1px solid rgba(201,168,76,.15);flex-shrink:0;margin-top:auto}
 .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
 .footer-brand p{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.8;margin-top:1rem}
 .footer-col h4{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
@@ -89,6 +108,7 @@ footer{background:var(--navy);padding:4rem 0 2rem;border-top:1px solid rgba(201,
 .footer-links a:hover{color:var(--gold)}
 .footer-bottom{padding-top:2rem;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bottom p{font-size:.8rem;color:rgba(255,255,255,.22)}
+
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
 
