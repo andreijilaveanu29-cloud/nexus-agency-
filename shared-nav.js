@@ -32,7 +32,7 @@
         </div>
       </a>
       <ul class="navbar-nav" id="navMenu">
-        ${navLinks.map(l=>`<li><a href="${l.href}" ${l.href===page+'.html'?'class="active"':''}>${l.label}</a></li>`).join('')}
+        ${navLinks.map(l=>`<li><a href="${l.href}" ${l.href === (page + '.html') ? 'class="active"' : ''}>${l.label}</a></li>`).join('')}
       </ul>
       <a href="free-audit.html" class="navbar-cta">Free Audit</a>
       <div class="hamburger" id="hamburger" onclick="document.getElementById('navMenu').classList.toggle('open')">
@@ -93,6 +93,9 @@
     </div>
   </footer>`;
 
+  // Inject Navbar at top of body
   document.body.insertAdjacentHTML('afterbegin', navHTML);
+  
+  // Inject Footer at bottom of body
   document.body.insertAdjacentHTML('beforeend', footerHTML);
 })();
